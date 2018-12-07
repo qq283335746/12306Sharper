@@ -18,7 +18,7 @@ namespace TygaSoft.Services
 
         public async Task<NetResponse> ExecuteAsync(NetRequest netRequest)
         {
-            _isDefaultContentType = netRequest.Parameters.Exists(m => m.ParamsOptions == ParameterOptions.HttpContentHeader && m.ContentType == HttpR.ContentTypeKey);
+            _isDefaultContentType = netRequest.Parameters.Any(m => m.ParamsOptions == ParameterOptions.HttpContentHeader && m.Name == HttpR.ContentTypeKey && m.Value == HttpR.ContentType);
 
             var request = new HttpRequestMessage();
 
@@ -29,7 +29,7 @@ namespace TygaSoft.Services
                     break;
                 case HttpMethodOptions.Post:
                     request.Method = HttpMethod.Post;
-                    if (!_isDefaultContentType) _isDefaultContentType = !netRequest.Parameters.Exists(m => m.ParamsOptions == ParameterOptions.HttpContentHeader);
+                    if (!_isDefaultContentType) _isDefaultContentType = !netRequest.Parameters.Any(m => m.ParamsOptions == ParameterOptions.HttpContentHeader && m.Name == HttpR.ContentTypeKey);
                     break;
                 default:
                     request.Method = HttpMethod.Get;
@@ -120,21 +120,23 @@ namespace TygaSoft.Services
             var items = netRequest.Parameters.Where(m => m.ParamsOptions == ParameterOptions.GetOrPost);
             if (items == null || !items.Any()) return;
 
-            if (netRequest.Method == HttpMethodOptions.Post)
-            {
-                if (_isDefaultContentType)
-                {
-                    request.Content = new FormUrlEncodedContent(items.ToNvcs());
-                }
-                else
-                {
-                    request.Content = new ByteArrayContent(items.ToParameterString().AsBytes());
-                }
-            }
-            else
-            {
-                request.Content = new ByteArrayContent(items.ToParameterString().AsBytes());
-            }
+            // if (netRequest.Method == HttpMethodOptions.Post)
+            // {
+            //     if (_isDefaultContentType)
+            //     {
+            //         request.Content = new FormUrlEncodedContent(items.ToNvcs());
+            //     }
+            //     else
+            //     {
+            //         request.Content = new ByteArrayContent(items.ToParameterString().AsBytes());
+            //     }
+            // }
+            // else
+            // {
+            //     request.Content = new ByteArrayContent(items.ToParameterString().AsBytes());
+            // }
+
+            request.Content = new ByteArrayContent(items.ToParameterString().AsBytes());
         }
     }
 }

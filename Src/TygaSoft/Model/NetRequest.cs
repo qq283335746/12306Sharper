@@ -48,15 +48,6 @@ namespace TygaSoft.Model
             return this;
         }
 
-        public NetRequest AddParameter(string contentType)
-        {
-            return AddParameter(new NetParameter
-            {
-                ContentType = contentType,
-                ParamsOptions = ParameterOptions.HttpContentHeader
-            });
-        }
-
         public NetRequest AddParameter(string name, string value)
         {
             return AddParameter(new NetParameter

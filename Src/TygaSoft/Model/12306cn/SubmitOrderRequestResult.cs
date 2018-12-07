@@ -12,6 +12,6 @@ namespace TygaSoft.Model
 
         public string data{get;set;}
 
-        public string messages{get;set;}
+        public IEnumerable<string> messages{get;set;}
     }
 }

@@ -72,11 +72,15 @@ namespace TygaSoft.Services
             var submitOrderRequestInfo = new SubmitOrderRequestInfo { SecretStr = firstTicketInfo.SecretStr, TrainDate = userOrderInfo.RideDate, BackTrainDate = userOrderInfo.BackRideDate, FromStation = userOrderInfo.FromStationName, ToStation = userOrderInfo.ToStationName, TourFlag = userOrderInfo.TourFlag, PurposeCode = userOrderInfo.PurposeCode };
             submitOrderRequestInfo.Referer = otnLeftTicketQueryInfo.Referer;
             var submitOrderRequestResult = await SubmitOrderRequestAsync(submitOrderRequestInfo);
+            if(submitOrderRequestResult == null) 
+            {
+                return;
+            }
         }
 
         public UserOrderInfo GetUserOrderInfo(string userName)
         {
-            return new UserOrderInfo { RideDate = "2018-12-010", BackRideDate = DateTime.Now.ToString("yyyy-MM-dd"), FromStationCode = "SZQ", FromStationName = "深圳", ToStationCode = "CSQ", ToStationName = "长沙", TourFlag = "dc", PurposeCode = PurposeOptions.ADULT.ToString() };
+            return new UserOrderInfo { RideDate = "2018-12-10", BackRideDate = DateTime.Now.ToString("yyyy-MM-dd"), FromStationCode = "SZQ", FromStationName = "深圳", ToStationCode = "CSQ", ToStationName = "长沙", TourFlag = "dc", PurposeCode = PurposeOptions.ADULT.ToString() };
         }
 
         /// 示例：https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2018-12-04&leftTicketDTO.from_station=SZQ&leftTicketDTO.to_station=CSQ&purpose_codes=ADULT
@@ -84,7 +88,7 @@ namespace TygaSoft.Services
         {
             var url = string.Format(_otnLeftTicketQuery, reqInfo.Date, reqInfo.FromStation, reqInfo.ToStation, reqInfo.PurposeCode);
 
-            var request = CreateRequest(url, reqInfo.Referer,HttpMethodOptions.Get);
+            var request = CreateRequest(url, reqInfo.Referer, HttpMethodOptions.Get);
 
             var res = await _netClientService.ExecuteAsync(request);
 
@@ -103,11 +107,11 @@ namespace TygaSoft.Services
 
         public async Task<SubmitOrderRequestResult> SubmitOrderRequestAsync(SubmitOrderRequestInfo reqInfo)
         {
-            var request = CreateRequest(_submitOrderRequest, reqInfo.Referer,HttpMethodOptions.Post);
+            var request = CreateRequest(_submitOrderRequest, reqInfo.Referer, HttpMethodOptions.Post);
             //request.Method = MethodOptions.Post;
-            //request.AddParameter(string.Empty, string.Empty, "application/x-www-form-urlencoded", ParameterType.HttpHeader);
+            request.AddParameter(HttpR.ContentTypeKey, HttpR.ContentType, ParameterOptions.HttpContentHeader);
             request.AddParameter("secretStr", reqInfo.SecretStr);
-            request.AddParameter("train_date", reqInfo.TrainDate);
+            //request.AddParameter("train_date", reqInfo.TrainDate);
             request.AddParameter("back_train_date", reqInfo.BackTrainDate);
             request.AddParameter("tour_flag", reqInfo.TourFlag);
             request.AddParameter("purpose_codes", reqInfo.PurposeCode);
@@ -117,12 +121,24 @@ namespace TygaSoft.Services
 
             var res = await _netClientService.ExecuteAsync(request);
 
-            return JsonConvert.DeserializeObject<SubmitOrderRequestResult>(res.Content);
+            Console.WriteLine("res.ResponseUri--{0},res.Content--{1}", res.ResponseUri, res.Content);
+
+            SubmitOrderRequestResult submitOrderRequestResult = null;
+            try
+            {
+                submitOrderRequestResult = JsonConvert.DeserializeObject<SubmitOrderRequestResult>(res.Content);
+            }
+            catch
+            {
+
+            }
+
+            return submitOrderRequestResult;
         }
 
         private NetRequest CreateRequest(string baseUrl, string referer, HttpMethodOptions methodOptions)
         {
-            var request = new NetRequest(baseUrl,methodOptions);
+            var request = new NetRequest(baseUrl, methodOptions);
             request.AddParameter(HttpR.CookieKey, _execute12306cnInfo.Cookie, ParameterOptions.HttpHeader);
             request.AddParameter(HttpR.RefererKey, referer, ParameterOptions.HttpHeader);
             request.AddParameter(HttpR.UserAgentKey, HttpR.UserAgent, ParameterOptions.HttpHeader);
