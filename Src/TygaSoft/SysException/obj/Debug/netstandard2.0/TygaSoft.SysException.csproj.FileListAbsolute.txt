@@ -1,0 +1,17 @@
+/home/tygasoft/Tyga/GitHub/12306Analyzer/Src/TygaSoft/SysException/bin/Debug/netstandard2.0/TygaSoft.SysException.deps.json
+/home/tygasoft/Tyga/GitHub/12306Analyzer/Src/TygaSoft/SysException/bin/Debug/netstandard2.0/TygaSoft.SysException.dll
+/home/tygasoft/Tyga/GitHub/12306Analyzer/Src/TygaSoft/SysException/bin/Debug/netstandard2.0/TygaSoft.SysException.pdb
+/home/tygasoft/Tyga/GitHub/12306Analyzer/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.csproj.CoreCompileInputs.cache
+/home/tygasoft/Tyga/GitHub/12306Analyzer/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.AssemblyInfoInputs.cache
+/home/tygasoft/Tyga/GitHub/12306Analyzer/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.AssemblyInfo.cs
+/home/tygasoft/Tyga/GitHub/12306Analyzer/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.dll
+/home/tygasoft/Tyga/GitHub/12306Analyzer/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.pdb
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/SysException/bin/Debug/netstandard2.0/TygaSoft.SysException.deps.json
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/SysException/bin/Debug/netstandard2.0/TygaSoft.SysException.dll
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/SysException/bin/Debug/netstandard2.0/TygaSoft.SysException.pdb
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.csproj.CoreCompileInputs.cache
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.AssemblyInfoInputs.cache
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.AssemblyInfo.cs
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.dll
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.pdb
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/SysException/obj/Debug/netstandard2.0/TygaSoft.SysException.csprojAssemblyReference.cache
