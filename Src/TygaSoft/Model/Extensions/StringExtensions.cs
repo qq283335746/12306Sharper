@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace TygaSoft.Model
 {
@@ -61,6 +62,18 @@ namespace TygaSoft.Model
                 dics.Add(item.Name, item.Value);
             }
             return dics;
+        }
+
+        public static T ToModel<T>(this string content) where T:class
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(content);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

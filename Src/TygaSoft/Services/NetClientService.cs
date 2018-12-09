@@ -117,24 +117,17 @@ namespace TygaSoft.Services
 
         private void AppendContent(NetRequest netRequest, HttpRequestMessage request)
         {
+            if (netRequest.Method == HttpMethodOptions.Post)
+            {
+                if (_isDefaultContentType)
+                {
+                    var formItems = netRequest.Parameters.Where(m=>m.ParamsOptions == ParameterOptions.FormUrlEncodedContent);
+                    if(formItems != null && formItems.Any()) request.Content = new FormUrlEncodedContent(formItems.ToNvcs());
+                }
+            }
+
             var items = netRequest.Parameters.Where(m => m.ParamsOptions == ParameterOptions.GetOrPost);
             if (items == null || !items.Any()) return;
-
-            // if (netRequest.Method == HttpMethodOptions.Post)
-            // {
-            //     if (_isDefaultContentType)
-            //     {
-            //         request.Content = new FormUrlEncodedContent(items.ToNvcs());
-            //     }
-            //     else
-            //     {
-            //         request.Content = new ByteArrayContent(items.ToParameterString().AsBytes());
-            //     }
-            // }
-            // else
-            // {
-            //     request.Content = new ByteArrayContent(items.ToParameterString().AsBytes());
-            // }
 
             request.Content = new ByteArrayContent(items.ToParameterString().AsBytes());
         }

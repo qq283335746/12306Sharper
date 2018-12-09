@@ -24,7 +24,8 @@ namespace TygaSoft.Model
         HttpHeader,
         HttpContentHeader,
         RequestBody,
-        QueryString
+        QueryString,
+        FormUrlEncodedContent
     }
 
     public enum HttpMethodOptions

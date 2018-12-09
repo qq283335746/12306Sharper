@@ -179,6 +179,9 @@
         }
       },
       "TygaSoft.Model/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
         "runtime": {
           "TygaSoft.Model.dll": {}
         }

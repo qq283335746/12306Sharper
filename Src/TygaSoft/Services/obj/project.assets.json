@@ -201,6 +201,9 @@
       "TygaSoft.Model/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
         "compile": {
           "bin/placeholder/TygaSoft.Model.dll": {}
         },
