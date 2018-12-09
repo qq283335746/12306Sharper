@@ -9,7 +9,7 @@ namespace TygaSoft.Model
         public bool status { get; set; }
         public int httpstatus { get; set; }
         public IEnumerable<string> messages { get; set; }
-        public T data{get;set;}
+        public T data { get; set; }
     }
 
     public class OtnLeftTicketQueryResult
@@ -23,32 +23,36 @@ namespace TygaSoft.Model
 
     public class SubmitOrderRequestResult
     {
-        public string data{get;set;}
+        public string data { get; set; }
     }
 
     public class ConfirmPassengerDTOsResult
     {
-        public bool isExist{get;set;}
-        public string exMsg{get;set;}
-        public IEnumerable<RailwayPassengerInfo> normal_passengers{get;set;}
+        public bool isExist { get; set; }
+        public string exMsg { get; set; }
+        public IEnumerable<RailwayPassengerInfo> normal_passengers { get; set; }
     }
 
     public class ConfirmPassengerInitDcResult
     {
-        public string GlobalRepeatSubmitToken{get;set;}
+        public string GlobalRepeatSubmitToken { get; set; }
+        public TicketInfoForPassengerFormInfo TicketInfoForPassengerInfo{get;set;}
+
         public const string GlobalRepeatSubmitTokenPattern = @"(.*)globalRepeatSubmitToken(\s*)=(\s*)([""\'])?(.*)([""\'])?(.*)";
-        public const string GlobalRepeatSubmitTokenValuePattern = @"([""\'])?(.*)([""\'])?";
+        public const string ValuePattern = @"([""\'])?(.*)([""\'])?";
+
+        public const string TicketInfoForPassengerFormPattern = @"(.*)ticketInfoForPassengerForm(\s*)=(\s*)([""\'])?(.*)([""\'])?(.*)";
     }
 
     public class ConfirmPassengerCheckOrderResult
     {
-        public string ifShowPassCode{get;set;}
-        public string canChooseBeds{get;set;}
-        public string canChooseSeats{get;set;}
-        public string choose_Seats{get;set;}
-        public string isCanChooseMid{get;set;}
-        public string ifShowPassCodeTime{get;set;}
-        public bool submitStatus{get;set;}
-        public string smokeStr{get;set;}
+        public string ifShowPassCode { get; set; }
+        public string canChooseBeds { get; set; }
+        public string canChooseSeats { get; set; }    //是否可以选择座位：Y/N
+        public string choose_Seats { get; set; }
+        public string isCanChooseMid { get; set; }
+        public string ifShowPassCodeTime { get; set; }
+        public bool submitStatus { get; set; }
+        public string smokeStr { get; set; }
     }
 }
