@@ -4,7 +4,7 @@ namespace TygaSoft.Model
     {
         public string SecretStr{get;set;}
 
-        public string TrainNo{get;set;}
+        public string TrainNo{get;set;}    //车次，如：G72
 
         public string TrainCode{get;set;}    //车辆代号，如：6i0000D9040E
 

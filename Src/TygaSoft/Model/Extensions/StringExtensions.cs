@@ -49,6 +49,13 @@ namespace TygaSoft.Model
             }
         }
 
+        public static string ToCst(this DateTime shortTime)
+        {
+            var s = shortTime.ToString("D", System.Globalization.DateTimeFormatInfo.InvariantInfo);
+            var arr = s.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            return string.Format("{0} {1} {2} {3} 00:00:00 GMT+0800 (CST)", arr[0].Substring(0, 3), arr[2].Substring(0, 3), arr[1], arr[3]);
+        }
+
         public static string ToParameterString(this IEnumerable<NetParameter> datas)
         {
             return string.Join("&", datas.Select(m => m.ToString()));
@@ -64,7 +71,7 @@ namespace TygaSoft.Model
             return dics;
         }
 
-        public static T ToModel<T>(this string content) where T:class
+        public static T ToModel<T>(this string content) where T : class
         {
             try
             {
