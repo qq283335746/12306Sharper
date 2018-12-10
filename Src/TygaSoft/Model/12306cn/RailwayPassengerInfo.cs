@@ -2,6 +2,7 @@ using System;
 
 namespace TygaSoft.Model
 {
+    //对应12306cn，直接json字符串转为实体类
     public class RailwayPassengerInfo
     {
         public string passenger_name { get; set; }    //姓名

@@ -76,13 +76,13 @@ namespace TygaSoft.Services
             confirmPassengerCheckOrderInfo.Referer = UrlsIn12306cn._otnConfirmPassengerInitDcUrl;
             var confirmPassengerCheckOrderResult = await ConfirmPassengerCheckOrderAsync(confirmPassengerCheckOrderInfo);
 
-var mm = new ConfirmPassengerQueueCountInfo{RepeatSubmitToken=confirmPassengerInitDcResult.GlobalRepeatSubmitToken,FromStationTelecode=firstTicketInfo.FromStationTelecode,LeftTicket=confirmPassengerInitDcResult.TicketInfoForPassengerInfo.leftTicketStr}
-            var sr = await ConfirmPassengerQueueCount()
+            var confirmPassengerQueueCountInfo = new ConfirmPassengerQueueCountInfo {TrainNo = firstTicketInfo.TrainNo,RepeatSubmitToken = confirmPassengerInitDcResult.GlobalRepeatSubmitToken, FromStationTelecode = firstTicketInfo.FromStationTelecode, LeftTicket = confirmPassengerInitDcResult.TicketInfoForPassengerInfo.leftTicketStr,PurposeCode=confirmPassengerInitDcResult.TicketInfoForPassengerInfo.purpose_codes,SeatType = userOrderInfo.SeatType,TrainLocation = confirmPassengerInitDcResult.TicketInfoForPassengerInfo.train_location};
+            await ConfirmPassengerQueueCount(confirmPassengerQueueCountInfo);
         }
 
         public UserOrderInfo GetUserOrderInfo(string userName)
         {
-            return new UserOrderInfo { RideDate = "2018-12-10", BackRideDate = DateTime.Now.ToString("yyyy-MM-dd"), FromStationCode = "SZQ", FromStationName = "深圳", ToStationCode = "CSQ", ToStationName = "长沙", TourFlag = "dc", PurposeCode = PurposeOptions.ADULT.ToString() };
+            return new UserOrderInfo { RideDate = "2018-12-10", BackRideDate = DateTime.Now.ToString("yyyy-MM-dd"), FromStationCode = "SZQ", FromStationName = "深圳", ToStationCode = "CSQ", ToStationName = "长沙", TourFlag = "dc", PurposeCode = PurposeOptions.ADULT.ToString(),TrainType = TrainTypeOptions.G,SeatType = Enum12306Datas.GetSeatType("二等座") };
         }
 
         /// 示例：https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2018-12-04&leftTicketDTO.from_station=SZQ&leftTicketDTO.to_station=CSQ&purpose_codes=ADULT
@@ -193,8 +193,10 @@ var mm = new ConfirmPassengerQueueCountInfo{RepeatSubmitToken=confirmPassengerIn
             request.AddParameter("train_date", reqInfo.TrainDate, ParameterOptions.FormUrlEncodedContent);
             request.AddParameter("train_location", reqInfo.TrainLocation, ParameterOptions.FormUrlEncodedContent);
             request.AddParameter("train_no", reqInfo.TrainNo, ParameterOptions.FormUrlEncodedContent);
-          
+
             var res = await _netClientService.ExecuteAsync(request);
+
+            Console.WriteLine("ConfirmPassengerQueueCount,res.ResponseUri--{0},res.Content--{1}", res.ResponseUri, res.Content);
         }
 
         private NetRequest CreateRequest(string baseUrl, string referer, HttpMethodOptions methodOptions)
@@ -221,7 +223,7 @@ var mm = new ConfirmPassengerQueueCountInfo{RepeatSubmitToken=confirmPassengerIn
             {
                 var itemArr = item.ToArray1();
 
-                tickets.Add(new RailwayTicketInfo { SecretStr = itemArr[0], BtnText = itemArr[1], TrainCode = itemArr[2], Coded = itemArr[3], FromStationTelecode = itemArr[4], ToStationTelecode = itemArr[7] });
+                tickets.Add(new RailwayTicketInfo { SecretStr = itemArr[0], BtnText = itemArr[1], TrainCode = itemArr[2], TrainNo = itemArr[3], FromStationTelecode = itemArr[4], ToStationTelecode = itemArr[7] });
             }
 
             return tickets;

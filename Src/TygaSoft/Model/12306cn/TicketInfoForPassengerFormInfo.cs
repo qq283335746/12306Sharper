@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace TygaSoft.Model
 {
+    // 对应12306cn相关字段，将json字符串转换为该实体类
     public class TicketInfoForPassengerFormInfo
     {
         public string key_check_isChange{get;set;}    //如：0047227C13D4757297571E160101C00B3390019486424E35204D34BE

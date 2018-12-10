@@ -21,5 +21,9 @@ namespace TygaSoft.Model
         public string TourFlag{get;set;}    //旅行类型
 
         public string PurposeCode{get;set;}    //乘客类型
+
+        public TrainTypeOptions TrainType{get;set;}    //火车类型，如：高铁
+
+        public string SeatType{get;set;}    //座位类型，如：二等座
     }
 }

@@ -2,9 +2,9 @@ namespace TygaSoft.Model
 {
     public class RailwayTicketInfo
     {
-        public string Coded{get;set;}
-
         public string SecretStr{get;set;}
+
+        public string TrainNo{get;set;}
 
         public string TrainCode{get;set;}    //车辆代号，如：6i0000D9040E
 
