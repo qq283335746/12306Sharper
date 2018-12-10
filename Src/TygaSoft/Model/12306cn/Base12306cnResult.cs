@@ -21,10 +21,10 @@ namespace TygaSoft.Model
         public IEnumerable<string> result { get; set; }
     }
 
-    public class SubmitOrderRequestResult
-    {
-        public string data { get; set; }
-    }
+    // public class SubmitOrderRequestResult
+    // {
+    //     public string data { get; set; }
+    // }
 
     public class ConfirmPassengerDTOsResult
     {
@@ -36,7 +36,7 @@ namespace TygaSoft.Model
     public class ConfirmPassengerInitDcResult
     {
         public string GlobalRepeatSubmitToken { get; set; }
-        public TicketInfoForPassengerFormInfo TicketInfoForPassengerInfo{get;set;}
+        public TicketInfoForPassengerFormInfo TicketInfoForPassengerInfo { get; set; }
 
         public const string GlobalRepeatSubmitTokenPattern = @"(.*)globalRepeatSubmitToken(\s*)=(\s*)([""\'])?(.*)([""\'])?(.*)";
         public const string ValuePattern = @"([""\'])?(.*)([""\'])?";
@@ -52,7 +52,8 @@ namespace TygaSoft.Model
         public string choose_Seats { get; set; }
         public string isCanChooseMid { get; set; }
         public string ifShowPassCodeTime { get; set; }
-        public bool submitStatus { get; set; }
         public string smokeStr { get; set; }
+        public bool submitStatus { get; set; }    
+        public string errMsg { get; set; }
     }
 }

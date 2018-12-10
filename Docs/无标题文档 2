@@ -1,3 +1,9 @@
+
+"{\"validateMessagesShowId\":\"_validatorMessage\",\"status\":true,\"httpstatus\":200,\"data\":\"Y\",\"messages\":[],\"validateMessages\":{}}"
+
+https://kyfw.12306.cn/otn/confirmPassenger/checkOrderInfo:
+{"validateMessagesShowId":"_validatorMessage","status":true,"httpstatus":200,"data":{"checkSeatNum":true,"errMsg":"您选择了1位乘车人，但本次列车动卧仅剩0张。","submitStatus":false},"messages":[],"validateMessages":{}}
+
 "FRIbFB4YDUoWgs%2BuM%2Bcsjiqf%2BGIXUi5DfDTT%2Bmqdc%2BRcxqQa03vQSRRMQUDVTFI9coNFFSv9%2FNKX%0AfKLScsAEbZBvBo%2BdWKzOglpJgph4ayvTqZeEOUT1eaa03mAnYHbdy0H7pwr0kTMJ63C4pWl5NcPF%0ARe5xj1WorqzUcOkbxoLcZoX92w4hIgzLk7oIxgw6YvmDL5HvplrrMsoFk%2F1ZThFvFcxskCFOGbS4%0AXFYpbXpji6vgXyumuEhZZD0h4fnWAwgSVofWqCqSZFDU|预订|6i000G10020B|G1002|IOQ|WHN|IOQ|CWQ|07:00|10:10|03:10|Y|UntMSIiTV4XzZViSjH7J4PiTgIFWUAWH4m2VGw1KdafYQWaeaFycG06ZniA%3D|20181210|3|Q6|01|05|1|0|||||||无||||有|有|12||O090M0O0|O9MO|0"
 
 

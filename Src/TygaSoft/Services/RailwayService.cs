@@ -30,12 +30,12 @@ namespace TygaSoft.Services
             _execute12306cnInfo = execute12306cnInfo;
 
             var userOrderInfo = GetUserOrderInfo(execute12306cnInfo.UserName);
-            var otnLeftTicketQueryInfo = new OtnLeftTicketQueryInfo 
-            { 
-                PurposeCode = userOrderInfo.PurposeCode, 
-                Date = userOrderInfo.RideDate, 
-                FromStation = userOrderInfo.FromStationCode, 
-                ToStation = userOrderInfo.ToStationCode 
+            var otnLeftTicketQueryInfo = new OtnLeftTicketQueryInfo
+            {
+                PurposeCode = userOrderInfo.PurposeCode,
+                Date = userOrderInfo.RideDate,
+                FromStation = userOrderInfo.FromStationCode,
+                ToStation = userOrderInfo.ToStationCode
             };
             otnLeftTicketQueryInfo.Referer = string.Format(UrlsIn12306cn._otnLeftTicketInitUrl, userOrderInfo.TourFlag, string.Format("{0},{1}", userOrderInfo.FromStationName, userOrderInfo.FromStationCode), string.Format("{0},{1}", userOrderInfo.ToStationName, userOrderInfo.ToStationCode), userOrderInfo.RideDate, "N,N,Y");
 
@@ -51,14 +51,14 @@ namespace TygaSoft.Services
             }
 
             var ticketInfo = tickets.First();
-            var submitOrderRequestInfo = new SubmitOrderRequestInfo 
-            { 
-                SecretStr = ticketInfo.SecretStr, 
-                TrainDate = userOrderInfo.RideDate, 
-                BackTrainDate = userOrderInfo.BackRideDate, 
-                FromStation = userOrderInfo.FromStationName, 
-                ToStation = userOrderInfo.ToStationName, 
-                TourFlag = userOrderInfo.TourFlag, 
+            var submitOrderRequestInfo = new SubmitOrderRequestInfo
+            {
+                SecretStr = ticketInfo.SecretStr,
+                TrainDate = userOrderInfo.RideDate,
+                BackTrainDate = userOrderInfo.BackRideDate,
+                FromStation = userOrderInfo.FromStationName,
+                ToStation = userOrderInfo.ToStationName,
+                TourFlag = userOrderInfo.TourFlag,
                 PurposeCode = userOrderInfo.PurposeCode,
                 Referer = otnLeftTicketQueryInfo.Referer
             };
@@ -86,28 +86,34 @@ namespace TygaSoft.Services
                 Console.WriteLine("ConfirmPassengerDTOsAsync,passengerInfo is null");
                 return;
             }
-            var confirmPassengerCheckOrderInfo = new ConfirmPassengerCheckOrderInfo 
-            { 
-                RepeatSubmitToken = confirmPassengerInitDcResult.GlobalRepeatSubmitToken, 
-                JsonAtt = string.Empty, 
-                BedLevelOrderNum = "000000000000000000000000000000", 
-                CancelFlag = 2, 
-                OldPassengerStr = Enum12306Datas.OldPassengerStrFormat(passengerInfo), 
-                PassengerTicketStr = Enum12306Datas.PassengerTicketStrFormat(passengerInfo), 
-                TourFlag = userOrderInfo.TourFlag, WhatsSelect = 1,
+            var confirmPassengerCheckOrderInfo = new ConfirmPassengerCheckOrderInfo
+            {
+                RepeatSubmitToken = confirmPassengerInitDcResult.GlobalRepeatSubmitToken,
+                JsonAtt = string.Empty,
+                BedLevelOrderNum = "000000000000000000000000000000",
+                CancelFlag = 2,
+                OldPassengerStr = Enum12306Datas.OldPassengerStrFormat(passengerInfo),
+                PassengerTicketStr = Enum12306Datas.PassengerTicketStrFormat(passengerInfo),
+                TourFlag = userOrderInfo.TourFlag,
+                WhatsSelect = 1,
                 Referer = UrlsIn12306cn._otnConfirmPassengerInitDcUrl
             };
             var confirmPassengerCheckOrderResult = await ConfirmPassengerCheckOrderAsync(confirmPassengerCheckOrderInfo);
-
-            var confirmPassengerQueueCountInfo = new ConfirmPassengerQueueCountInfo 
+            if (!confirmPassengerCheckOrderResult.data.submitStatus)
             {
-                //TrainDate = 
+                Console.WriteLine(confirmPassengerCheckOrderResult.data.errMsg);
+                return;
+            }
+
+            var confirmPassengerQueueCountInfo = new ConfirmPassengerQueueCountInfo
+            {
+                TrainDate = DateTime.Parse(userOrderInfo.RideDate).ToCst(),
                 TrainNo = ticketInfo.TrainCode,
-                RepeatSubmitToken = confirmPassengerInitDcResult.GlobalRepeatSubmitToken, 
+                RepeatSubmitToken = confirmPassengerInitDcResult.GlobalRepeatSubmitToken,
                 FromStationTelecode = ticketInfo.FromStationTelecode,
-                ToStationTelecode = ticketInfo.ToStationTelecode, 
+                ToStationTelecode = ticketInfo.ToStationTelecode,
                 LeftTicket = confirmPassengerInitDcResult.TicketInfoForPassengerInfo.leftTicketStr,
-                PurposeCode=confirmPassengerInitDcResult.TicketInfoForPassengerInfo.purpose_codes,
+                PurposeCode = confirmPassengerInitDcResult.TicketInfoForPassengerInfo.purpose_codes,
                 SeatType = userOrderInfo.SeatType,
                 TrainLocation = confirmPassengerInitDcResult.TicketInfoForPassengerInfo.train_location,
                 StationTrainCode = ticketInfo.TrainNo,
@@ -118,7 +124,7 @@ namespace TygaSoft.Services
 
         public UserOrderInfo GetUserOrderInfo(string userName)
         {
-            return new UserOrderInfo { RideDate = "2018-12-10", BackRideDate = DateTime.Now.ToString("yyyy-MM-dd"), FromStationCode = "SZQ", FromStationName = "深圳", ToStationCode = "CSQ", ToStationName = "长沙", TourFlag = "dc", PurposeCode = PurposeOptions.ADULT.ToString(),TrainType = TrainTypeOptions.G,SeatType = Enum12306Datas.GetSeatType("二等座") };
+            return new UserOrderInfo { RideDate = "2018-12-10", BackRideDate = DateTime.Now.ToString("yyyy-MM-dd"), FromStationCode = "SZQ", FromStationName = "深圳", ToStationCode = "CSQ", ToStationName = "长沙", TourFlag = "dc", PurposeCode = PurposeOptions.ADULT.ToString(), TrainType = TrainTypeOptions.G, SeatType = Enum12306Datas.GetSeatType("二等座") };
         }
 
         /// 示例：https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2018-12-04&leftTicketDTO.from_station=SZQ&leftTicketDTO.to_station=CSQ&purpose_codes=ADULT
@@ -135,7 +141,7 @@ namespace TygaSoft.Services
             return res.Content.ToModel<Base12306cnResult<OtnLeftTicketQueryResult>>();
         }
 
-        public async Task<Base12306cnResult<SubmitOrderRequestResult>> SubmitOrderRequestAsync(SubmitOrderRequestInfo reqInfo)
+        public async Task<Base12306cnResult<string>> SubmitOrderRequestAsync(SubmitOrderRequestInfo reqInfo)
         {
             var request = CreateRequest(UrlsIn12306cn._submitOrderRequestUrl, reqInfo.Referer, HttpMethodOptions.Post);
             //request.Method = MethodOptions.Post;
@@ -153,7 +159,7 @@ namespace TygaSoft.Services
 
             Console.WriteLine("SubmitOrderRequestAsync,res.ResponseUri--{0},res.Content--{1}", res.ResponseUri, res.Content);
 
-            return res.Content.ToModel<Base12306cnResult<SubmitOrderRequestResult>>();
+            return res.Content.ToModel<Base12306cnResult<string>>();
         }
 
         public async Task<ConfirmPassengerInitDcResult> OtnConfirmPassengerInitDcAsync(string referer)
@@ -257,6 +263,8 @@ namespace TygaSoft.Services
 
             foreach (var item in model.result)
             {
+                if (!item.Contains("预订")) continue;
+
                 var itemArr = item.ToArray1();
 
                 tickets.Add(new RailwayTicketInfo { SecretStr = itemArr[0], BtnText = itemArr[1], TrainCode = itemArr[2], TrainNo = itemArr[3], FromStationTelecode = itemArr[4], ToStationTelecode = itemArr[7] });
