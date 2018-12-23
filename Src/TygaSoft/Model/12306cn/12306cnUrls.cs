@@ -6,7 +6,8 @@ namespace TygaSoft.Model
         public const string _otnLeftTicketInitUrl = "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid={0}&fs={1}&ts={2}&date={3}&flag={4}";
 
         // 示例：https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2018-12-04&leftTicketDTO.from_station=SZQ&leftTicketDTO.to_station=CSQ&purpose_codes=ADULT
-        public const string _otnLeftTicketQueryUrl = "https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date={0}&leftTicketDTO.from_station={1}&leftTicketDTO.to_station={2}&purpose_codes={3}";
+        //public const string _otnLeftTicketQueryUrl = "https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date={0}&leftTicketDTO.from_station={1}&leftTicketDTO.to_station={2}&purpose_codes={3}";
+        public const string _otnLeftTicketQueryUrl = "https://kyfw.12306.cn/otn/leftTicket/queryX?leftTicketDTO.train_date={0}&leftTicketDTO.from_station={1}&leftTicketDTO.to_station={2}&purpose_codes={3}";
 
         //POST
         public const string _submitOrderRequestUrl = "https://kyfw.12306.cn/otn/leftTicket/submitOrderRequest";
@@ -23,5 +24,6 @@ namespace TygaSoft.Model
         //POST
         public const string _otnConfirmPassengerQueueCountUrl = "https://kyfw.12306.cn/otn/confirmPassenger/getQueueCount";
 
+        public const string _otnConfirmSingleForQueue = "https://kyfw.12306.cn/otn/confirmPassenger/confirmSingleForQueue";
     }
 }

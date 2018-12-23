@@ -18,6 +18,14 @@ namespace TygaSoft.Model
 
         public string TakeTimes{get;set;}    //历时，如：03:31
 
+        public int SpecialSeatNum{get;set;}    //特等座数量
+
+        public int FirstSeatNum{get;set;}    //一等座数量
+
+        public int SecondSeatNum{get;set;}    //二等座数量
+
+        public string TrainLocation{get;set;}    //如：Q6
+
         public string BtnText{get;set;}    //按钮显示文本，如：预订
 
     }

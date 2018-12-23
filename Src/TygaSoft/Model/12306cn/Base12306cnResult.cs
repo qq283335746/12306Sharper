@@ -56,4 +56,18 @@ namespace TygaSoft.Model
         public bool submitStatus { get; set; }    
         public string errMsg { get; set; }
     }
+
+    public class ConfirmPassengerQueueCountResult
+    {
+        public int count{get;set;}    //143
+        public int countT{get;set;}
+        public string ticket{get;set;}    //6,0
+        public bool op_1{get;set;}
+        public bool op_2{get;set;}
+    }
+
+    public class ConfirmSingleForQueueResult
+    {
+        
+    }
 }

@@ -3,6 +3,12 @@
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Api.runtimeconfig.dev.json
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Api.dll
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Api.pdb
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.IServices.dll
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Model.dll
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Services.dll
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Model.pdb
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.IServices.pdb
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Services.pdb
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/obj/Debug/netcoreapp2.1/TygaSoft.Api.csprojAssemblyReference.cache
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/obj/Debug/netcoreapp2.1/TygaSoft.Api.csproj.CoreCompileInputs.cache
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/obj/Debug/netcoreapp2.1/TygaSoft.Api.RazorAssemblyInfo.cache
@@ -10,12 +16,6 @@
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/obj/Debug/netcoreapp2.1/TygaSoft.Api.AssemblyInfoInputs.cache
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/obj/Debug/netcoreapp2.1/TygaSoft.Api.AssemblyInfo.cs
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/obj/Debug/netcoreapp2.1/TygaSoft.Api.RazorTargetAssemblyInfo.cache
+/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/obj/Debug/netcoreapp2.1/TygaSoft.Api.csproj.CopyComplete
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/obj/Debug/netcoreapp2.1/TygaSoft.Api.dll
 /home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/obj/Debug/netcoreapp2.1/TygaSoft.Api.pdb
-/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.IServices.dll
-/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Model.dll
-/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Services.dll
-/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Model.pdb
-/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.IServices.pdb
-/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/bin/Debug/netcoreapp2.1/TygaSoft.Services.pdb
-/home/tygasoft/Tyga/GitHub/12306Sharper/Src/TygaSoft/Api/obj/Debug/netcoreapp2.1/TygaSoft.Api.csproj.CopyComplete

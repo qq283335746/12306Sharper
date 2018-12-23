@@ -24,6 +24,6 @@ namespace TygaSoft.Model
 
         public TrainTypeOptions TrainType{get;set;}    //火车类型，如：高铁
 
-        public string SeatType{get;set;}    //座位类型，如：二等座
+        public SeatTypeOptions SeatType{get;set;}    //座位类型，如：二等座
     }
 }
